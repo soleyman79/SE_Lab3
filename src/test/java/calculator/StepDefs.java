@@ -6,10 +6,11 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
+
 public class StepDefs {
     private Calculator calculator;
-    private int value1;
-    private int value2;
+    private int first;
+    private int second;
     private int result;
 
     @Before
@@ -17,38 +18,20 @@ public class StepDefs {
         calculator = new Calculator();
     }
 
-    @Given("^Two input values, (\\d+) and (\\d+)$")
-    public void addInputV1(int arg0, int arg1) {
-        value1 = arg0;
-        value2 = arg1;
+    @Given("^Operands are (-?\\d+) & (-?\\d+) and Operator is \\+$")
+    public void givenAddOperation(int arg0, int arg1) {
+        first = arg0;
+        second = arg1;
     }
 
-    @Given("^Two input values, -(\\d+) and (\\d+)$")
-    public void addInputV2(int arg0, int arg1) {
-        value1 = -arg0;
-        value2 = arg1;
-    }
-
-    @Given("^Two input values, (\\d+) and -(\\d+)$")
-    public void addInputV3(int arg0, int arg1) {
-        value1 = arg0;
-        value2 = -arg1;
-    }
-
-    @Given("^Two input values, -(\\d+) and -(\\d+)$")
-    public void addInputV4(int arg0, int arg1) {
-        value1 = -arg0;
-        value2 = -arg1;
-    }
-
-    @When("^I add the two values$")
-    public void addWhen() {
-        result = calculator.add(value1, value2);
+    @When("^Run$")
+    public void run() {
+        result = calculator.add(first, second);
         System.out.print(result);
     }
 
-    @Then("^I expect the result (\\d+)$")
-    public void addExpect(int arg0) {
+    @Then("^Expected Result: (-?\\d+)$")
+    public void expectedResultResult(int arg0) {
         Assert.assertEquals(arg0, result);
     }
 }

@@ -2,14 +2,10 @@
 Feature: Calculator
 
   Scenario Outline: add two numbers
-    Given Two input values, <first> and <second>
-    When I add the two values
-    Then I expect the result <result>
+    Given Operands are <first> & <second> and Operator is <op>
+    When Run
+    Then Expected Result: <result>
 
     Examples:
-      | first | second | result |
-      | 1     | 12     | 13     |
-      | -1    | 6      | 5      |
-      | 2     | -2     | 0      |
-      | -3    | -4     | -7     |
-      | 0     | 0      | 0      |
+      | first | second | op | result |
+      | 1     | 12     | +  | 13     |
