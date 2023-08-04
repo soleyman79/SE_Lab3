@@ -11,27 +11,45 @@ public class StepDefs {
     private Calculator calculator;
     private int first;
     private int second;
-    private int result;
+    private double result;
 
     @Before
     public void before() {
         calculator = new Calculator();
     }
 
-    @Given("^Operands are (-?\\d+) & (-?\\d+) and Operator is \\+$")
+    @Given("^Operands: (-?\\d+) & (-?\\d+)$")
     public void givenAddOperation(int arg0, int arg1) {
         first = arg0;
         second = arg1;
     }
 
-    @When("^Run$")
-    public void run() {
+    @When("^Run +$")
+    public void runAdd() {
         result = calculator.add(first, second);
         System.out.print(result);
     }
 
+    @When("^Run /$")
+    public void runDivide() {
+        result = calculator.divide(first, second);
+        System.out.print(result);
+    }
+
+    @When("^Run *$")
+    public void runMultiply() {
+        result = calculator.multiply(first, second);
+        System.out.print(result);
+    }
+
+    @When("^Run \\^$")
+    public void runPower() {
+        result = calculator.power(first, second);
+        System.out.print(result);
+    }
+
     @Then("^Expected Result: (-?\\d+)$")
-    public void expectedResultResult(int arg0) {
-        Assert.assertEquals(arg0, result);
+    public void expectedResultResult(double arg0) {
+        Assert.assertEquals(arg0, result, 0);
     }
 }
