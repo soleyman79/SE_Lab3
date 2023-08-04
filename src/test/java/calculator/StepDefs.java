@@ -24,7 +24,7 @@ public class StepDefs {
         second = arg1;
     }
 
-    @When("^Run +$")
+    @When("^Run \\+$")
     public void runAdd() {
         result = calculator.add(first, second);
         System.out.print(result);
@@ -36,7 +36,7 @@ public class StepDefs {
         System.out.print(result);
     }
 
-    @When("^Run *$")
+    @When("^Run \\*$")
     public void runMultiply() {
         result = calculator.multiply(first, second);
         System.out.print(result);
@@ -48,8 +48,8 @@ public class StepDefs {
         System.out.print(result);
     }
 
-    @Then("^Expected Result: (-?\\d+)$")
-    public void expectedResultResult(double arg0) {
-        Assert.assertEquals(arg0, result, 0);
+    @Then("^Expected Result: (-?\\d+\\.?\\d*)$")
+    public void expectedResultResult(String arg0) {
+        Assert.assertEquals(Double.parseDouble(arg0), result, 0);
     }
 }

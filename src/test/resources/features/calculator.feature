@@ -1,7 +1,7 @@
 @tag
 Feature: Calculator
 
-  Scenario Outline: add two numbers
+  Scenario Outline: calculate the operation
     Given Operands: <first> & <second>
     When Run <op>
     Then Expected Result: <result>
@@ -14,7 +14,7 @@ Feature: Calculator
       | -6    | 3      | ^  | -216   |
       | 3     | 5      | ^  | 243    |
       | 6     | 2      | ^  | 36     |
-      | 10    | 5      | ^  | 100000 | 
+      | 10    | 5      | ^  | 100000 |
       | 0     | 20     | ^  | 0      |
       | 0     | 5      | ^  | 0      |
       | -1    | 5      | +  | 4      |
