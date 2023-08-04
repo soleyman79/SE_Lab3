@@ -18,20 +18,37 @@ public class StepDefs {
     }
 
     @Given("^Two input values, (\\d+) and (\\d+)$")
-    public void twoInputValuesAnd(int arg0, int arg1) {
+    public void addInputV1(int arg0, int arg1) {
         value1 = arg0;
         value2 = arg1;
     }
 
+    @Given("^Two input values, -(\\d+) and (\\d+)$")
+    public void addInputV2(int arg0, int arg1) {
+        value1 = -arg0;
+        value2 = arg1;
+    }
+
+    @Given("^Two input values, (\\d+) and -(\\d+)$")
+    public void addInputV3(int arg0, int arg1) {
+        value1 = arg0;
+        value2 = -arg1;
+    }
+
+    @Given("^Two input values, -(\\d+) and -(\\d+)$")
+    public void addInputV4(int arg0, int arg1) {
+        value1 = -arg0;
+        value2 = -arg1;
+    }
 
     @When("^I add the two values$")
-    public void iAddTheTwoValues() {
+    public void addWhen() {
         result = calculator.add(value1, value2);
         System.out.print(result);
     }
 
     @Then("^I expect the result (\\d+)$")
-    public void iExpectTheResult(int arg0) {
+    public void addExpect(int arg0) {
         Assert.assertEquals(arg0, result);
     }
 }
